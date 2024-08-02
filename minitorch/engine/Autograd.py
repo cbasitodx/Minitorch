@@ -76,8 +76,9 @@ class Value:
 
 
     def __wrapValue(self, other : int | float) -> 'Value':
+
         """
-        Wraps a numerical value (integer or float) as an object of this class.
+            Wraps a numerical value (integer or float) as an object of this class.
         """
 
         # We check if other is a 'Value' class instance
@@ -138,6 +139,7 @@ class Value:
         return out        
 
     def sigmoid(self) -> 'Value':
+
         """
             Evaluates the sigmoid function (see below) with this object as argument.
             
@@ -157,6 +159,7 @@ class Value:
         return out       
 
     def relu(self) -> 'Value':
+
         """
             Evaluates the ReLU (Rectifie Linear Unit) function (see below) with this object as argument.
             
@@ -204,6 +207,7 @@ class Value:
         return f"Value(data={self.data}, grad={self.grad})"
 
     def backward(self):
+
         """
             Differentiates the **function whose value is the current object** with respect to all of the nodes in the tree whose root is the current object.
             Differentiation is performed using **reverse automatic differentiation**.
@@ -234,13 +238,17 @@ class Value:
 
     # Useful methods for visualization of the computation graph
     def getChildren(self) -> set:
+
         """
             Return the children of the current object in a **set**.
         """
+
         return self.__children
     
     def getOperation(self) -> str:
+        
         """
             Return the operation of the current object as a **string**.
         """
+
         return self.__op
