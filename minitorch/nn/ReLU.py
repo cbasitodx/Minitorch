@@ -14,14 +14,19 @@ class ReLU:
 
         Can be applied either to a single Value object, int or float, or to a Tensor (including all dimensions).
 
-        ReLU function is describes as:
+        ReLU function is described as:
 
         .. math::
             \\begin{align*}
-                ReLU (x) :=& ReLU() \\\\
+                ReLU :=& ReLU() \\\\
                 ReLu(x) =& x \\text{ if } x > 0  \\text{ } ; \\text{ } 0 \\text{ otherwise}
             \\end{align*}
-    
+
+        Where :math:`x` is described as a single value.
+
+        .. note::
+            This class is compatible with containers such as :class:`minitorch.nn.Sequential`
+
     ==============
     **Parameters**
     ==============
@@ -69,6 +74,6 @@ class ReLU:
             self.res = wrapped.relu
         
         else:
-            raise Exception("ReLU can ONLY be used with Tensor objects, Value objects, integers or floats")
+            raise Exception("ReLU can ONLY be applied to Tensor objects, Value objects, integers or floats")
 
         return self.res

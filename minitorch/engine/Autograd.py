@@ -145,7 +145,7 @@ class Value:
             
             .. math::
 
-                sig(x) = \\frac{1}{ 1+e^{-x} }
+                sig(x) = \\sigma(x) = \\frac{1}{ 1+e^{-x} }
 
         """
 
