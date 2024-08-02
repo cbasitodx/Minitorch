@@ -9,7 +9,8 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("../minitorch"))
+sys.path.insert(0, os.path.abspath(".."))
+sys.path.append(os.path.abspath("../minitorch"))
 
 project = 'Minitorch'
 copyright = '2024, Sebastián Kay Conde Lorenzo'

@@ -4,9 +4,9 @@ from typing import Tuple
 class Value:
 
     """
-    =======
+    ===========
     **Summary**
-    =======
+    ===========
 
         Class that represents a real value variable in a function. 
         Objects of this class interact with themselves in a tree fashion when within the same function.
@@ -17,11 +17,11 @@ class Value:
 
         **ReLU** and **Sigmoid** functions of an object of this class can also be calculated.  
     
-    ==========
+    ==============
     **Parameters**
-    ==========
+    ==============
     
-        * **data:** (*float*): Numerical value of the object.
+        * **data** (*float*) Numerical value of the object.
 
         * **grad:** (*float*) Numerical value of the partial derivative of the function with respect to the current object evaluated in an initial value.
 
@@ -33,9 +33,9 @@ class Value:
 
         * **__op:** (*str*) Symbolic representation of the operation applied to __children in order to form the current object.
 
-    ==================
+    ======================
     **Instance Variables**
-    ==================
+    ======================
 
         * **data:** (*float*) Numerical value of the object.
         
@@ -45,9 +45,9 @@ class Value:
         
         * **label:** (*str*) Label of this object.
 
-    =======
+    ===========
     **Example**
-    =======
+    ===========
 
         >>> a = Value(3)
         >>> b = Value(4)
