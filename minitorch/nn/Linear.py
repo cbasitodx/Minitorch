@@ -17,8 +17,8 @@ class Linear(Module):
 
         .. math::
             \\begin{align*}
-            l :=& Linear \\\\
-            l(\\bar{x}) =& \\bar{x} \\cdot W^{T} + \\bar{b}
+                l :=& Linear \\\\
+                l(\\bar{x}) =& \\bar{x} \\cdot W^{T} + \\bar{b}
             \\end{align*}
 
         Where the data :math:`\\bar{x}` is a **row** vector. This meaning that its shape is :math:`(1,in_features)`,

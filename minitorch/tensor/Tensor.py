@@ -21,7 +21,7 @@ class Tensor:
             else:
                 return [len(data)] + get_dims(data[0]) 
         
-        # TODO: PONER ERROR SI LA SHAPE ES >= 3 O SI NO SE INTRODUJO UN VALOR ENTONCES ERROR
+        # TODO: PONER ERROR SI LA LEN DE LA SHAPE ES >= 3 O SI NO SE INTRODUJO UN VALOR ENTONCES ERROR
         self.shape = get_dims(data)
 
         self.__data : Value | List[Value] | List[List[Value]] | List[List[List[Value]]]
@@ -111,7 +111,3 @@ class Tensor:
         new_data = [list(row) for row in zip(*self.__data)]
 
         return Tensor(new_data)
-    
-    # TODO: QUITAR ESTO. ES SOLO PARA ENTRENAR A LA RED EASY CUANDO DEFINO EL MSE
-    def get_data(self):
-        return self.__data
