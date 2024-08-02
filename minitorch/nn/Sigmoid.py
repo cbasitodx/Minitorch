@@ -19,7 +19,7 @@ class Sigmoid:
         .. math::
             \\begin{align*}
                 \\sigma :=& Sigmoid() \\\\
-                \\sigma(x) =& x \\frac{1}{ 1+e^{-x} }
+                \\sigma(x) =& \\frac{1}{ 1+e^{-x} }
             \\end{align*}
 
         Where :math:`x` is described as a single value.
