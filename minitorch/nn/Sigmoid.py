@@ -18,7 +18,7 @@ class Sigmoid:
 
         .. math::
             \\begin{align*}
-                \\simga :=& Sigmoid() \\\\
+                \\sigma :=& Sigmoid() \\\\
                 \\sigma(x) =& x \\frac{1}{ 1+e^{-x} }
             \\end{align*}
 
