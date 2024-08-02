@@ -30,6 +30,9 @@ class Module:
 
         """
             Returns the parameters of the model as a list of Value objects.
+            
+            .. warning::
+                This method should **NOT** be overwriten by custom model classes.
         """
 
         # List of parameters (Value objects) to be returned
