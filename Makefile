@@ -1,35 +1,37 @@
 SHELL := /bin/bash
 
 all:
-	@echo "\n USE 'make env' TO GENERATE THE VIRTUALENV FOR THIS PROJECT! 👨‍💻 💬 THIS IS THE FIRST COMMAND YOU SHOULD RUN! 💬 \n"
-	@echo "\n USE 'make doc' TO GENERATE DOCUMENTATION FOR THIS PROJECT! DOCUMENTATION IS AVAILABLE IN docs/__build/html 📁  \n"
-	@echo "\n USE 'make tests' TO RUN TESTS FOR THIS PROJECT! 🧪"
+	@echo -e "\n USE 'make env' TO GENERATE THE VIRTUALENV FOR THIS PROJECT! 👨‍💻 💬 THIS IS THE FIRST COMMAND YOU SHOULD RUN! 💬 \n"
+	@echo -e "\n USE 'make doc' TO GENERATE DOCUMENTATION FOR THIS PROJECT! DOCUMENTATION IS AVAILABLE IN docs/__build/html 📁  \n"
+	@echo -e "\n USE 'make tests' TO RUN TESTS FOR THIS PROJECT! 🧪"
+	@echo -e "\n USE 'make clean' TO REMOVE YOUR VIRTUAL ENVIROMENT! ❌"
 
 # Creates documentation
 doc:
 	(\
-		@echo "\n --------------- ACTIVATING VIRTUALENV --------------- \n"; \
+		echo -e "\n --------------- ACTIVATING VIRTUALENV --------------- \n"; \
 		source venv/bin/activate; \
-		@echo "\n --------------- CREATING DOCUMENTATION --------------- \n"; \
+		echo -e "\n --------------- CREATING DOCUMENTATION --------------- \n"; \
 		sphinx-apidoc -o ./docs ./minitorch; \
 		make -C ./docs html; \
-		@echo "\n --------------- DOCUMENTATION CREATED! (check log) --------------- \n"; \
+		echo -e "\n --------------- DOCUMENTATION CREATED! (check log) --------------- \n"; \
 		deactivate; \
 	)
 
-# Creates virtualen and installs dependencies
+# Creates virtualenv and installs dependencies
 env:
 	(\ 
-		@echo "\n --------------- CREATING VIRTUALENV --------------- \n"; \
+		echo -e "\n --------------- CREATING VIRTUALENV --------------- \n"; \
+		pip3 install virtualenv; \
 		virtualenv venv; \
-		@echo "\n --------------- VIRTUALENV CREATED --------------- \n"; \
-		@echo "\n --------------- ACTIVATING VIRTUALENV --------------- \n"; \
+		echo -e "\n --------------- VIRTUALENV CREATED --------------- \n"; \
+		echo -e "\n --------------- ACTIVATING VIRTUALENV --------------- \n"; \
 		source venv/bin/activate; \
-		@echo "\n --------------- VIRTUALENV ACTIVATED --------------- \n"; \
-		@echo "\n --------------- INSTALLING DEPENDENCIES --------------- \n"; \
+		echo -e "\n --------------- VIRTUALENV ACTIVATED --------------- \n"; \
+		echo -e "\n --------------- INSTALLING DEPENDENCIES --------------- \n"; \
 		pip3 install -r requirements.txt; \
-		@echo "\n --------------- DEPENDENCIES INSTALLED --------------- \n"; \
+		echo -e "\n --------------- DEPENDENCIES INSTALLED --------------- \n"; \
 		deactivate; \
 	)
 
-# TODO: PONER UN all (con emojis bonitos q explique el funcionamiento), PONER TAMBIEN UN tests (para hacer tests unitarios!), Y ṔONER UN CLEAN!!
+# TODO: PONER UN tests (para hacer tests unitarios!), Y ṔONER UN CLEAN!!

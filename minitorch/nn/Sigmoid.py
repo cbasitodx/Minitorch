@@ -1,5 +1,5 @@
-from minitorch.engine.Autograd import Value
-from minitorch.tensor.Tensor import Tensor
+from minitorch.Autograd import Value
+from minitorch.Tensor import Tensor
 
 from typing import List
 
@@ -31,7 +31,7 @@ class Sigmoid:
     **Parameters**
     ==============
     
-        * **res:** (:class:`minitorch.tensor.Tensor` | :class:`minitorch.engine.Value`) Result of the operation. Serves for caching.
+        * **res:** (:class:`Tensor.Tensor` | :class:`Autograd.Value`) Result of the operation. Serves for caching.
 
     ===========
     **Example**

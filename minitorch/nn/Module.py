@@ -1,5 +1,5 @@
 from typing import List
-from minitorch.engine.Autograd import Value
+from minitorch.Autograd import Value
 
 class Module:
 

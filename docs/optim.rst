@@ -1,13 +1,13 @@
-engine package
-==============
+optim package
+=============
 
 Submodules
 ----------
 
-engine.Autograd module
-----------------------
+optim.SGD module
+----------------
 
-.. automodule:: engine.Autograd
+.. automodule:: optim.SGD
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ engine.Autograd module
 Module contents
 ---------------
 
-.. automodule:: engine
+.. automodule:: optim
    :members:
    :undoc-members:
    :show-inheritance:

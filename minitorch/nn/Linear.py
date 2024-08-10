@@ -1,5 +1,5 @@
-from minitorch.engine.Autograd import Value
-from minitorch.tensor.Tensor import Tensor
+from minitorch.Autograd import Value
+from minitorch.Tensor import Tensor
 from minitorch.nn.Module import Module
 from typing import List
 import random
@@ -32,8 +32,8 @@ class Linear(Module):
     **Parameters**
     ==============
     
-        * **__weights:** (:class:`minitorch.tensor.Tensor`) Learnable weights. Matrix of shape :math:`(out_features, in_features)`.
-        * **__bias:** (:class:`minitorch.tensor.Tensor`) Learnable bias vector. If ``bias = True``, its a vector of shape :math:`(1, out_features)`.
+        * **__weights:** (:class:`Tensor.Tensor`) Learnable weights. Matrix of shape :math:`(out_features, in_features)`.
+        * **__bias:** (:class:`Tensor.Tensor`) Learnable bias vector. If ``bias = True``, its a vector of shape :math:`(1, out_features)`.
 
     ======================
     **Instance Variables**

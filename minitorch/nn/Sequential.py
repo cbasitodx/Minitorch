@@ -1,5 +1,5 @@
-from minitorch.engine.Autograd import Value
-from minitorch.tensor.Tensor import Tensor
+from minitorch.Autograd import Value
+from minitorch.Tensor import Tensor
 from minitorch.nn.Module import Module
 from typing import Tuple, List
 
@@ -30,7 +30,7 @@ class Sequential(Module):
     **Instance Variables**
     ======================
 
-        * ***layers:** (*Tuple[callable]*) Tuple of all the callable objects that comprise a Sequential instance.
+        * **layers:** (*Tuple[callable]*) Tuple of all the callable objects that comprise a Sequential instance.
 
     ===========
     **Example**

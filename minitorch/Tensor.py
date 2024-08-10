@@ -1,4 +1,4 @@
-from minitorch.engine.Autograd import Value
+from minitorch.Autograd import Value
 from typing import List, Tuple, Any
 
 class Tensor:
@@ -8,7 +8,7 @@ class Tensor:
     **Summary**
     ===========
 
-        A :class:`minitorch.tensor.Tensor` is a multi-dimensional matrix containing elements of a single data type.
+        A :class:`Tensor` is a multi-dimensional matrix containing elements of a single data type.
 
         This class only allows a maximum of four (4) dimensions. These can be seen as:
 
@@ -36,7 +36,7 @@ class Tensor:
     
         * **shape:** (*Tuple[int]*) Dimensions of the tensor. Its read as (Batch Size, Number of Channels, Rows, Columns)
 
-        * **__data:** (:class:`minitorch.engine.Value` | *List*) List that contains the raw data of the tensor as Value objects.
+        * **__data:** (:class:`Autograd.Value` | *List*) List that contains the raw data of the tensor as Value objects.
 
     ======================
     **Instance Variables**
