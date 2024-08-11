@@ -5,4 +5,5 @@
 
     All optimizers implement a step() method, that updates the parameters.
 """
+from .Optimizer import Optimizer
 from .SGD import SGD

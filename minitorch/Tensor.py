@@ -94,7 +94,7 @@ class Tensor:
     def __mul__(self, other : 'Tensor') -> 'Tensor':
 
         """
-            In version 0.0.1, this class only supports scalar multiplication and vector or matrix multiplication.
+            In version 0.0.1, this class only supports multiplication of scalars and vector or matrix multiplication.
             It is mathematically accurate.
         """
 

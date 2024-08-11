@@ -1,4 +1,6 @@
-from Optimizer import Optimizer
+from minitorch.optim.Optimizer import Optimizer
+from minitorch.Autograd import Value
+from typing import Iterable
 
 class SGD (Optimizer):
     """
@@ -6,52 +8,63 @@ class SGD (Optimizer):
     **Summary**
     ===========
 
-        Class that represents a real value variable in a function. 
-        Objects of this class interact with themselves in a tree fashion when within the same function.
-        This structure allows the numerical calculation of partial derivatives of the function with respect to every Value object that comprises it.
-        It even allows numerical calculation of partial derivatives of sub functions. This is accomplished via **reverse automatic differentiation**.
-
-        Objects of this class support **addition**, **substraction**, **multiplication** and **exponentiation** between them. They can also be **printed**.
-
-        **ReLU** and **Sigmoid** functions of an object of this class can also be calculated.  
+        Class that implements stochastic gradient descent (SGD).
     
     ==============
     **Parameters**
     ==============
     
-        * **data** (*float*) Numerical value of the object.
-
-        * **grad:** (*float*) Numerical value of the partial derivative of the function with respect to the current object evaluated in an initial value.
-
-        * **label:** (*str*) Symbolic name of the variable.
-
-        * **__backward:** (*callable*) Function that explicits how the function that this object is part of must be differentiated with respect to this object.
-
-        * **__children:** (*Set*) Tuple of objects of this class that are combined together with an operation to form the current object.
-
-        * **__op:** (*str*) Symbolic representation of the operation applied to __children in order to form the current object.
+        * **params:** (*Iterable[Value]*) An iterable of Value objects that are subject to be optimized by the optimizer algorithm (Optimizer subclass).
+        * **lr:** (*float*) Learning rate to be used during the stochastic gradient descent. Default is :math:`1 \\cdot 10^{-3}`. 
 
     ======================
     **Instance Variables**
     ======================
 
-        * **data:** (*float*) Numerical value of the object.
-        
-        * **children:** (*tuple*) Tuple of objects of this class that are combined with an operation to form the current object.
-        
-        * **op:** (*str*) Operation that forms this object.
-        
-        * **label:** (*str*) Label of this object.
+        * **params:** (*Iterable[Value]*) Parameters of the model that must be optimized.
+        * **lr:** (*float*) Learning rate hyperparameter for the optimization algorithm.
 
     ===========
     **Example**
     ===========
 
-        >>> a = Value(3)
-        >>> b = Value(4)
-        >>> f = a * b + (b**2)
+        .. code-block:: python
+
+            # This is a basic training loop
+
+            optim_sgd = SGD(model.parameters())
+
+            for i in range(epochs):
+                for output, label in zip(data):
+                
+                    output = model.forward(d)
+                    model.zero_grad()
+                    loss = MSE(output, label)
+                    loss.backward()
+                    optim_sgd.step()
 
     """
-    def __init__(self):
-        self.x = 3
+    def __init__(self, params : Iterable[Value], lr : float = 1e-3):
+        super().__init__(params)
+        self.lr = lr
+    
+    def step(self) -> None:
+        """
+            Performs a single optimization step.
+
+            Optimization step for SGD is defined as:
+
+            .. math::
+                \\text{for } t = 1 \\text{ to ... do} \\\\
+                \\begin{align*}
+                    &g_t \\leftarrow \\nabla_{\\theta} f_t(\\theta_{t-1}) \\\\
+                    &\\theta_t \\leftarrow \\theta_{t-1} - \\gamma \\cdot g_t
+                \\end{align*}
+
+            Where :math:`\\gamma` is the learning rate and :math:`t` goes from 1 to the parameters of the model.
+                
+        """
+        # Iterate through all the parameters and update them "in the direction of their gradient with a step as big as {learning rate}"
+        for param in self.params:
+            param.data = param.data - (self.lr * param.grad)
     

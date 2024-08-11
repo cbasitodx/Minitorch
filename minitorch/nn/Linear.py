@@ -41,6 +41,7 @@ class Linear(Module):
 
         * **in_features:** (*int*) Number of input features. 
         * **out_features:** (*int*) Number of output features. 
+        * **seed:** (*int*) Seed of the random number generator
 
     ===========
     **Example**
@@ -52,8 +53,12 @@ class Linear(Module):
 
     """
 
-    def __init__(self, in_features : int, out_features : int, bias : bool = True):
+    def __init__(self, in_features : int, out_features : int, bias : bool = True, seed : int = 4):
         
+        # Firstly, we set up the seed of the random number generator
+        random.seed(seed)
+
+        # Then generate the initial weights and biases (if bias = True)
         k : float = 1/in_features
         self.__weights : Tensor = Tensor([[random.uniform(-math.sqrt(k), math.sqrt(k)) for _ in range(in_features)] for _ in range(out_features)])
 

@@ -73,7 +73,7 @@ class Sequential(Module):
             activation = (self.__layers[i])(activation)
         return activation
 
-    def parameters(self):
+    def parameters(self) -> List[Value]:
         parameters : List[Value] = []
         for layer in self.__trainable:
             parameters += layer.parameters()

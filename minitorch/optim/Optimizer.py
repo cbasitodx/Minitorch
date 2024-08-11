@@ -1,53 +1,40 @@
+from minitorch.Autograd import Value
+from typing import Iterable
+
 class Optimizer:
-        """
+    """
     ===========
     **Summary**
     ===========
 
-        Class that represents a real value variable in a function. 
-        Objects of this class interact with themselves in a tree fashion when within the same function.
-        This structure allows the numerical calculation of partial derivatives of the function with respect to every Value object that comprises it.
-        It even allows numerical calculation of partial derivatives of sub functions. This is accomplished via **reverse automatic differentiation**.
+        Base class that all optimizers must import. Functions as an interface and provides high abstraction methods.
 
-        Objects of this class support **addition**, **substraction**, **multiplication** and **exponentiation** between them. They can also be **printed**.
-
-        **ReLU** and **Sigmoid** functions of an object of this class can also be calculated.  
-    
     ==============
     **Parameters**
     ==============
     
-        * **data** (*float*) Numerical value of the object.
-
-        * **grad:** (*float*) Numerical value of the partial derivative of the function with respect to the current object evaluated in an initial value.
-
-        * **label:** (*str*) Symbolic name of the variable.
-
-        * **__backward:** (*callable*) Function that explicits how the function that this object is part of must be differentiated with respect to this object.
-
-        * **__children:** (*Set*) Tuple of objects of this class that are combined together with an operation to form the current object.
-
-        * **__op:** (*str*) Symbolic representation of the operation applied to __children in order to form the current object.
+        * **params:** (*Iterable[Value]*) An iterable of Value objects that are subject to be optimized by the optimizer algorithm (Optimizer subclass).
 
     ======================
     **Instance Variables**
     ======================
 
-        * **data:** (*float*) Numerical value of the object.
-        
-        * **children:** (*tuple*) Tuple of objects of this class that are combined with an operation to form the current object.
-        
-        * **op:** (*str*) Operation that forms this object.
-        
-        * **label:** (*str*) Label of this object.
-
-    ===========
-    **Example**
-    ===========
-
-        >>> a = Value(3)
-        >>> b = Value(4)
-        >>> f = a * b + (b**2)
+        * **params:** (*Iterable[Value]*) Parameters of the model that must be optimized.
 
     """
-    pass
+    
+    def __init__(self, params : Iterable[Value]):
+        self.params = params
+
+    def step(self) -> None:
+        """
+            Performs a single optimization step.
+        """
+        pass
+
+    def zero_grad(self) -> None:
+        """
+            Resets the gradients of all optimized parameters.
+        """
+        for param in self.params:
+            param.grad = 0
