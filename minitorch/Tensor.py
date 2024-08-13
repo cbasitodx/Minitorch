@@ -169,7 +169,7 @@ class Tensor:
     def __mul__(self, other : int | float | Value | Tensor) -> Tensor:
 
         """
-            In version 0.0.1, this class only supports mathematically accurate operations. These are:
+            In version 1.0.0, this class only supports mathematically accurate operations. These are:
 
             * Scalar - Vector multiplication
             * Scalar - Matrix multiplication

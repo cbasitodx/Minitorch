@@ -15,7 +15,7 @@ sys.path.append(os.path.abspath("../minitorch"))
 project = 'Minitorch'
 copyright = '2024, Sebastián Kay Conde Lorenzo'
 author = 'Sebastián Kay Conde Lorenzo'
-release = '0.0.1'
+release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
