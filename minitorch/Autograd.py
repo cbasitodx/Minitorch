@@ -134,7 +134,7 @@ class Value:
         def __backward():
             self.grad  += other.data*(self.data**(other.data - 1))*out.grad
             
-            #NOTE: Commented because line above gives problems with loharithms (e.g: negative arguments)
+            #NOTE: Commented because line above gives problems with logarithms (e.g: negative arguments)
             #other.grad += (self.data**(other.data))*math.log(self.data)*out.grad
         out.__backward = __backward 
 
@@ -178,6 +178,24 @@ class Value:
             self.grad  += 1*out.grad if self.data > 0 else 0
         out.__backward = __backward 
 
+        return out
+
+    def log(self) -> 'Value':
+
+        """
+            Compute the natural logarithm (logarithm base *e*) with this object as argument.
+        """
+
+        # Error handling
+        if self.data <= 0:
+            raise Exception("Errro! Natural logarithm is not defined in the real numbers for values lesser than or equal to zero")
+
+        out = Value(math.log(self.data), children=(self,), op="log", label=f"log({self.label})")
+
+        def __backward():
+            self.grad += (1/self.data)*out.grad
+        out.__backward = __backward
+        
         return out
 
     def __truediv__(self, other : 'Value') -> 'Value':
