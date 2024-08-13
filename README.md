@@ -41,6 +41,7 @@ Building the project is simple! Here's how to get started:
 
 ## Prerequisites
 * make tool installed 🐧.
+* git installed 🎯​.
 * Python 3.x installed 🐍.
 
 ## 📚 Documentation
